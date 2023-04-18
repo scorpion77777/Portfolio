@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../app/components/layout.tsx"],
+  "sourcesContent": ["export function Layout({ children }: { children: React.ReactNode }) {\n    return (\n        <div className=\"h-screen w-full bg-blue-600 font-mono\">\n            {children}\n        </div>\n    )\n}"],
+  "mappings": ";;;;;;;;AAEQ;AAFD,SAAS,OAAO,EAAE,SAAS,GAAkC;AAChE,SACI,mDAAC,SAAI,WAAU,yCACV,YADL;AAAA;AAAA;AAAA;AAAA,SAEA;AAER;",
+  "names": []
+}
