@@ -117,7 +117,7 @@ function App() {
   }, this);
 }
 
-// app/routes/avatar.ts
+// app/routes/avatar.tsx
 var avatar_exports = {};
 __export(avatar_exports, {
   action: () => action
@@ -265,7 +265,7 @@ var import_node2 = require("@remix-run/node"), import_s3 = __toESM(require("aws-
   region: process.env.BUCKET_REGION,
   accessKeyId: process.env.ACCESS_KEY_ID,
   secretAccessKey: process.env.SECRET_ACCESS_KEY
-}), uploadHandler = async ({ stream, name, filename }) => {
+}), uploadHandler = async ({ name, filename, stream }) => {
   if (name !== "profile-pic") {
     stream.resume();
     return;
@@ -285,7 +285,7 @@ async function uploadAvatar(request) {
   )).get("profile-pic")) == null ? void 0 : _a.toString()) || "";
 }
 
-// app/routes/avatar.ts
+// app/routes/avatar.tsx
 var action = async ({ request }) => {
   let userId = await requireUserId(request), imageUrl = await uploadAvatar(request);
   return await prisma.user.update({
@@ -1640,7 +1640,7 @@ function ProfileSettings() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "3e6a6545", entry: { module: "/build/entry.client-KP72GFLA.js", imports: ["/build/_shared/chunk-CLQC6YQG.js", "/build/_shared/chunk-E4BGBYZL.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-7HZTE3SQ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/avatar": { id: "routes/avatar", parentId: "root", path: "avatar", index: void 0, caseSensitive: void 0, module: "/build/routes/avatar-XW7YLVGY.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/home": { id: "routes/home", parentId: "root", path: "home", index: void 0, caseSensitive: void 0, module: "/build/routes/home-5W3LQKAW.js", imports: ["/build/_shared/chunk-BNMJ7VGO.js", "/build/_shared/chunk-HSACKWZ3.js", "/build/_shared/chunk-IBDJ6IMC.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/home/kudo.$userId": { id: "routes/home/kudo.$userId", parentId: "routes/home", path: "kudo/:userId", index: void 0, caseSensitive: void 0, module: "/build/routes/home/kudo.$userId-IZ7YPDFQ.js", imports: ["/build/_shared/chunk-SM2TYWE6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/home/profile": { id: "routes/home/profile", parentId: "routes/home", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/home/profile-SS3VD5CQ.js", imports: ["/build/_shared/chunk-VGNREFO2.js", "/build/_shared/chunk-SM2TYWE6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-6NZLKEI5.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-RWTSUKGZ.js", imports: ["/build/_shared/chunk-VGNREFO2.js", "/build/_shared/chunk-BNMJ7VGO.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-NVA4EOD7.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-3E6A6545.js" };
+var assets_manifest_default = { version: "1c129769", entry: { module: "/build/entry.client-KP72GFLA.js", imports: ["/build/_shared/chunk-CLQC6YQG.js", "/build/_shared/chunk-E4BGBYZL.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-7HZTE3SQ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/avatar": { id: "routes/avatar", parentId: "root", path: "avatar", index: void 0, caseSensitive: void 0, module: "/build/routes/avatar-73AO5PHN.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/home": { id: "routes/home", parentId: "root", path: "home", index: void 0, caseSensitive: void 0, module: "/build/routes/home-5W3LQKAW.js", imports: ["/build/_shared/chunk-BNMJ7VGO.js", "/build/_shared/chunk-HSACKWZ3.js", "/build/_shared/chunk-IBDJ6IMC.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/home/kudo.$userId": { id: "routes/home/kudo.$userId", parentId: "routes/home", path: "kudo/:userId", index: void 0, caseSensitive: void 0, module: "/build/routes/home/kudo.$userId-IZ7YPDFQ.js", imports: ["/build/_shared/chunk-SM2TYWE6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/home/profile": { id: "routes/home/profile", parentId: "routes/home", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/home/profile-SS3VD5CQ.js", imports: ["/build/_shared/chunk-VGNREFO2.js", "/build/_shared/chunk-SM2TYWE6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-6NZLKEI5.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-RWTSUKGZ.js", imports: ["/build/_shared/chunk-VGNREFO2.js", "/build/_shared/chunk-BNMJ7VGO.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-NVA4EOD7.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-1C129769.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
